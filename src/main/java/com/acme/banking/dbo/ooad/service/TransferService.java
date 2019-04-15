@@ -4,7 +4,8 @@ import com.acme.banking.dbo.ooad.domain.Account;
 
 public class TransferService {
     //Creator [GRASP]
-    private CurrencyService currencyService = new NostalgieCurrencyService();
+    private CurrencyService currencyService =
+            CurrencyServiceFactory.create();
 
     public void withdraw(Account from, double rurAmount) { //PL/SQL
         //polymorphism
