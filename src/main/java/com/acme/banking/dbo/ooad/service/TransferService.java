@@ -16,13 +16,10 @@ public class TransferService {
         this.currencyService = currencyService;
     }
 
-    //Method DI
-    public void save(@Valid @x @y @z Request rq) {
-
-    }
-
-    public void withdraw(Account from, double rurAmount) { //PL/SQL
+    public void withdraw(long fromId, double rurAmount) { //PL/SQL
+        Account from = AccountRepo.findById(fromId); //factory
         //polymorphism
         from.withdraw(currencyService.exchange(rurAmount));
+        AccountRepo.save(from);
     }
 }
