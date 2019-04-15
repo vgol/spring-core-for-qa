@@ -1,6 +1,5 @@
 package com.acme.banking.dbo.legacy.domain;
 
-import com.acme.banking.dbo.legacy.domain.Account;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -10,7 +9,7 @@ public class AccountTest {
     @Test @Ignore
     public void externalCodeShouldConcernStateConsistency() {
         Account accountStructure = new Account();
-        accountStructure.creditLimit = 1_000;
+        accountStructure.overdraft = 1_000;
         accountStructure.amount = 0;
 
         //Look ma, no checks!

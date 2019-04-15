@@ -35,9 +35,9 @@ public class DemoIntegrationTestWithSpringBootTest {
 
     @Test @Ignore
     public void shouldCallPropertiesForAccountsWhenTransfer() {
-//        Account fromMock = mock(Account.class);
+//        SavingAccount fromMock = mock(SavingAccount.class);
 //        when(fromStub.getAmount()).thenReturn(10_000d);
-//        Account toMock = mock(Account.class);
+//        SavingAccount toMock = mock(SavingAccount.class);
 //
 //        transferService.transfer(fromMock, toMock, 100);
 //

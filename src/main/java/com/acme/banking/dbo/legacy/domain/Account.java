@@ -5,5 +5,5 @@ public class Account {
     public long id;
     public AccountType type;
     public double amount;
-    public double creditLimit; //state
+    public double overdraft; //state
 }

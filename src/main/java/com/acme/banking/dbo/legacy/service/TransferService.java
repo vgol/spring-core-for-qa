@@ -8,7 +8,7 @@ public class TransferService {
         if (from.type == AccountType.SAVING) {
             if (amount > from.amount) throw new IllegalStateException("Not enough funds to withdraw");
         } else if (from.type == AccountType.CHECKING) {
-            if (amount > from.amount + from.creditLimit) throw new IllegalStateException("Not enough funds to withdraw");
+            if (amount > from.amount + from.overdraft) throw new IllegalStateException("Not enough funds to withdraw");
         }
 
         from.amount -= amount;

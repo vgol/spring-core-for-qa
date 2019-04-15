@@ -12,7 +12,7 @@ public class TransferTest {
         Account savingAccount = new Account();
         savingAccount.type = AccountType.SAVING;
         savingAccount.amount = 100;
-        savingAccount.creditLimit = 1_000;
+        savingAccount.overdraft = 1_000;
 
         TransferService.withdraw(savingAccount, 500);
     }
@@ -22,7 +22,7 @@ public class TransferTest {
         Account checkingAccount = new Account();
         checkingAccount.type = AccountType.CHECKING;
         checkingAccount.amount = 100;
-        checkingAccount.creditLimit = 1_000;
+        checkingAccount.overdraft = 1_000;
 
         TransferService.withdraw(checkingAccount, 500);
 
