@@ -4,7 +4,7 @@ import com.acme.banking.dbo.ooad.domain.Account;
 
 public class TransferService {
     private CurrencyService currencyService =
-            AbstaractFactory.getConcreteFactory().getCurrencySerice();
+            Registry.getConcreteFactory().getCurrencySerice();
 
     public void withdraw(Account from, double rurAmount) { //PL/SQL
         //polymorphism
