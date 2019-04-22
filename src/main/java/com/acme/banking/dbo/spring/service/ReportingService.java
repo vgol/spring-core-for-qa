@@ -29,12 +29,8 @@ public class ReportingService {
         System.out.println("ReportingService shut down");
     }
 
-    @Transactional
-    @Cacheable
-    @RolesAllowed("admin,root")
-    @Retry
-    @Async
-    public Future<Double> getUsdAmountFor(@Valid long accountId) {
+
+    public double getUsdAmountFor(long accountId) {
         double rurAmount = accountRepository.findById(accountId).get().getAmount();
         return currencyService.getUsdRateForRur() * rurAmount;
     }
