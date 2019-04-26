@@ -1,23 +1,28 @@
 package com.acme.banking.dbo.spring.service;
 
 import com.acme.banking.dbo.spring.dao.AccountRepository;
+import com.acme.banking.dbo.spring.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Async;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 
 @Service
+@Scope("singleton")
+@Lazy
+@PropertySource("classpath:application.properties")
 public class ReportingService {
-    @Autowired private CurrencyService currencyService;
+    @Value("${marker}") private String layoutMarker;
+    @Autowired private AccountRepository accounts;
 
-    @Resource /** Like @Autowired but with JNDI support */
-    private AccountRepository accountRepository;
+    public void setLayoutMarker(String layoutMarker) {
+        this.layoutMarker = layoutMarker;
+    }
 
     @PostConstruct
     public void onCreate() {
@@ -29,9 +34,8 @@ public class ReportingService {
         System.out.println("ReportingService shut down");
     }
 
-
-    public double getUsdAmountFor(long accountId) {
-        double rurAmount = accountRepository.findById(accountId).get().getAmount();
-        return currencyService.getUsdRateForRur() * rurAmount;
+    public String accountReport(long id) {
+        Account account = accounts.findById(id).orElseThrow(() -> new IllegalStateException("Account not found"));
+        return layoutMarker + layoutMarker + " " + account.toString();
     }
 }

@@ -1,7 +1,5 @@
 package com.acme.banking.dbo.spring.domain;
 
-import org.springframework.validation.annotation.Validated;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
@@ -28,5 +26,14 @@ public abstract class Account {
 
     public double getAmount() {
         return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return getId() + " " + getAmount();
     }
 }

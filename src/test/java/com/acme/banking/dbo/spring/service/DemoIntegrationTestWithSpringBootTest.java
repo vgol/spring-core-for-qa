@@ -22,26 +22,32 @@ import static org.mockito.Mockito.*;
 @ActiveProfiles("test")
 public class DemoIntegrationTestWithSpringBootTest {
     @Autowired private ReportingService reportingService;
-    @MockBean private AccountRepository accountRepository; //mock(AccountRepository.class);
+    @Autowired private TransferService transferService;
+    @MockBean private AccountRepository accounts; //mock(AccountRepository.class);
 
     @Test
     public void shouldUseStubWithinSpringContext() {
         Account accountStub = mock(Account.class);
-        when(accountStub.getAmount()).thenReturn(10_000d);
-        when(accountRepository.findById(anyLong())).thenReturn(Optional.of(accountStub));
+        when(accountStub.toString()).thenReturn("0 100.0 S");
+        when(accounts.findById(anyLong())).thenReturn(Optional.of(accountStub));
 
-        assertThat(reportingService.getUsdAmountFor(0L)).isEqualTo(300000d);
+        assertThat(reportingService.accountReport(1L))
+                .isEqualTo("## 0 100.0 S");
     }
 
-    @Test @Ignore
+    @Test
     public void shouldCallPropertiesForAccountsWhenTransfer() {
-//        SavingAccount fromMock = mock(SavingAccount.class);
-//        when(fromStub.getAmount()).thenReturn(10_000d);
-//        SavingAccount toMock = mock(SavingAccount.class);
-//
-//        transferService.transfer(fromMock, toMock, 100);
-//
-//        verify(fromMock, times(1)).withdraw(100);
-//        verify(toMock).deposit(30_000);
+        Account accountFromStub = mock(Account.class);
+        when(accountFromStub.getAmount()).thenReturn(100d);
+        when(accounts.findById(1L)).thenReturn(Optional.of(accountFromStub));
+
+        Account accountToStub = mock(Account.class);
+        when(accountToStub.getAmount()).thenReturn(100d);
+        when(accounts.findById(2L)).thenReturn(Optional.of(accountToStub));
+
+        transferService.transfer(1L, 2L, 100);
+
+        verify(accountFromStub, times(1)).setAmount(0);
+        verify(accountToStub).setAmount(200);
     }
 }

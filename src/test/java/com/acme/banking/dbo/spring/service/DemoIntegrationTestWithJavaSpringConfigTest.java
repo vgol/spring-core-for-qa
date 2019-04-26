@@ -33,7 +33,7 @@ public class DemoIntegrationTestWithJavaSpringConfigTest {
         @Bean
         public AccountRepository accountRepository() {
             Account accountStub = mock(Account.class);
-            when(accountStub.getAmount()).thenReturn(10_000d);
+            when(accountStub.toString()).thenReturn("0 100.0 S");
             AccountRepository repoStub = mock(AccountRepository.class);
             when(repoStub.findById(anyLong())).thenReturn(Optional.of(accountStub));
             return repoStub;
@@ -42,6 +42,7 @@ public class DemoIntegrationTestWithJavaSpringConfigTest {
 
     @Test
     public void shouldUseStubWithinSpringContext() {
-        assertThat(reportingService.getUsdAmountFor(0L)).isEqualTo(300000d);
+        assertThat(reportingService.accountReport(0L))
+                .isEqualTo("## 0 100.0 S");
     }
 }

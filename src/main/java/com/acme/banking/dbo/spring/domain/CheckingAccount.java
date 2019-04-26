@@ -15,4 +15,9 @@ public class CheckingAccount extends Account {
         super(amount, email);
         this.overdraft = overdraft;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " C " + overdraft;
+    }
 }
