@@ -16,8 +16,11 @@ _Рассмотрим основные концепции и ограничен�
 - Git remote workflow
 
 ### Практика
-- Fork and clone main repo
-- Pull Requests
+- Fork and clone main repo for further development
+```
+git clone --depth 1 -b <YYYY-MM-project> https://github.com/eugene-krivosheyev/spring-core-for-qa
+```
+### Pull Requests Demo
 
 ## Современный гибкий и тестопригодный дизайн (3/1.5)
 ### Внутренняя модель качества
