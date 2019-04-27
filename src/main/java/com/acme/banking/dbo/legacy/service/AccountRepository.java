@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
+/** TODO Rename according intention and extract interface */
 public class AccountRepository {
     private static Map<Long, Account> accounts = new HashMap<>();
 

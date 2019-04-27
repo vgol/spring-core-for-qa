@@ -27,7 +27,7 @@ public class DemoIntegrationTestWithJavaSpringConfigTest {
     @Autowired private ReportingService reportingService;
 
     @Profile("test")
-    @Configuration
+    @Configuration //TODO Spring configuration styles: xml, annotation-driven, groovy, java
     @ImportResource({"classpath:test-spring-context.xml", "classpath:spring-context.xml"})
     public static class TestConfig {
         @Bean

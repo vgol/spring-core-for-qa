@@ -8,8 +8,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TransferService {
-    @Autowired private AccountRepository accounts;
+    private AccountRepository accounts;
 
+    /** TODO Field VS constructor VS setter injection*/
+    /** TODO Identifying issues: semantics for type/id lookup ans @Qualifier("id")/@Primary */
+    @Autowired
+    public TransferService(AccountRepository accounts) {
+        this.accounts = accounts;
+    }
+
+    /** TODO Semantics for @Transactional, @PreAuthorize + @Secured/@RolesAllowed, @Retryable/@Recover, @Async, @Cacheable + @CacheEvict/@CachePut */
     @Transactional
     public void transfer(long fromId, long toId, double amount) {
         Account from = accounts.findById(fromId).orElseThrow(() -> new IllegalStateException("Account not found"));

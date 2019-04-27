@@ -21,8 +21,7 @@ public class ReportingTest {
 
         String savingAccountReport = ReportingService.reportForAccount(1L);
 
-        assertThat(savingAccountReport)
-                .isEqualTo("## 1 100.0 S");
+        assertThat(savingAccountReport).isEqualTo("## 1 100.0 S");
     }
 
     @Test
@@ -32,7 +31,6 @@ public class ReportingTest {
 
         String savingAccountReport = ReportingService.reportForAccount(1L);
 
-        assertThat(savingAccountReport)
-                .isEqualTo("## 1 100.0 C 100.0");
+        assertThat(savingAccountReport).isEqualTo("## 1 100.0 C 100.0");
     }
 }

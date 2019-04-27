@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("S")
 public class SavingAccount extends Account {
-    public SavingAccount() {
-    }
+    public SavingAccount() { }
 
     public SavingAccount(double amount, String email) {
         super(amount, email);

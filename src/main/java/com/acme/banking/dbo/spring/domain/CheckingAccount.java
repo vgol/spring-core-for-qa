@@ -8,8 +8,7 @@ import javax.persistence.Entity;
 public class CheckingAccount extends Account {
     private double overdraft;
 
-    public CheckingAccount() {
-    }
+    public CheckingAccount() { }
 
     public CheckingAccount(double amount, double overdraft, String email) {
         super(amount, email);

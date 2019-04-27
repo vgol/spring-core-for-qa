@@ -2,14 +2,13 @@ package com.acme.banking.dbo.spring.service;
 
 import com.acme.banking.dbo.spring.dao.AccountRepository;
 import com.acme.banking.dbo.spring.domain.Account;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
@@ -26,7 +25,7 @@ public class DemoIntegrationTestWithSpringBootTest {
     @MockBean private AccountRepository accounts; //mock(AccountRepository.class);
 
     @Test
-    public void shouldUseStubWithinSpringContext() {
+    public void shouldUseStubInsteadOfProductionClassWhenCreateSpringContext() {
         Account accountStub = mock(Account.class);
         when(accountStub.toString()).thenReturn("0 100.0 S");
         when(accounts.findById(anyLong())).thenReturn(Optional.of(accountStub));
@@ -35,7 +34,7 @@ public class DemoIntegrationTestWithSpringBootTest {
                 .isEqualTo("## 0 100.0 S");
     }
 
-    @Test
+    @Test //TODO Interaction-based VS State-based testing
     public void shouldCallPropertiesForAccountsWhenTransfer() {
         Account accountFromStub = mock(Account.class);
         when(accountFromStub.getAmount()).thenReturn(100d);

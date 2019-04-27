@@ -3,6 +3,7 @@ package com.acme.banking.dbo.legacy.service;
 import com.acme.banking.dbo.legacy.domain.Account;
 import com.acme.banking.dbo.legacy.domain.AccountType;
 
+/** TODO Move out behavior for polymorphic algorithm */
 public class TransferService {
     private static void withdraw(Account from, double amount) {
         if (from.type == AccountType.SAVING) {

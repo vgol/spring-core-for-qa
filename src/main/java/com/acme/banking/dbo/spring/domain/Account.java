@@ -4,16 +4,17 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
-@Entity
+@Entity //TODO JPA Entity semantics
 @Inheritance
 @DiscriminatorColumn(name="ACCOUNT_TYPE")
 public abstract class Account {
+    /** TODO Validation Framework */
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-    private double amount;
     @Email @Size(max = 50) private String email;
+    private double amount;
 
-    public Account() {
-    }
+    /** No-arg constructor needed by JPA */
+    public Account() { }
 
     public Account(double amount, String email) {
         this.amount = amount;
@@ -28,6 +29,7 @@ public abstract class Account {
         return amount;
     }
 
+    /** TODO Mutable state */
     public void setAmount(double amount) {
         this.amount = amount;
     }
