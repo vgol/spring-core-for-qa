@@ -1,9 +1,6 @@
 # Тренинг «Введение в Spring для QA» (db)
 15 часов.<br/>
 _Рассмотрим основные концепции и ограничения Spring в разработке приложений и автотестов. Это актуально и разработчикам автотестов, т.к. Spring поможет снизить трудоемкость их разработки, так и ручным тестировщикам, т.к. им необходимо конфигурировать Spring-приложения перед прогоном тестового набора._
-<br/>
-[Reading List](http://tinyurl.com/skilltrekreadinglist)
-
 
 # Для кого
 - ручные QA Spring-приложений
@@ -257,3 +254,8 @@ Result of service1's operation call: 84
 ### Live coding demo
 - Рефакторинг Spring CRUD web-приложения на Boot
 - Сборка и запуск тестов
+
+---
+
+# Further Reading
+[Minimal Valuable Reading List](http://tinyurl.com/skilltrekreadinglist)
