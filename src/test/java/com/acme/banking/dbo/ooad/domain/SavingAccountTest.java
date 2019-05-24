@@ -8,52 +8,26 @@ public class SavingAccountTest {
 
     @Test
     public void depositShouldChangeAmount() {
-        SavingAccount account = new SavingAccount(1L, 0.0);
+        SavingAccount sut = new SavingAccount(1L, 0.0);
 
-        account.deposit(1.0);
+        sut.deposit(1.0);
 
-        assertThat(account.getAmount()).isEqualTo(1.0);
+        assertThat(sut.getAmount()).isEqualTo(1.0);
     }
 
     @Test(expected = IllegalStateException.class)
     public void notValidWithdrawShouldThrowException() {
-        SavingAccount account = new SavingAccount(1L, 0.0) {
-            boolean validate(double amount) {
-                return true;
-            }
-        };
+        SavingAccount sut = new SavingAccount(1L, 0.0);
 
-        account.withdraw(0.5);
+        sut.withdraw(0.5);
     }
 
     @Test
     public void validWithdrowShouldWithdraw() {
-        SavingAccount account = new SavingAccount(1L, 2.0) {
-            boolean validate(double amount) {
-                return false;
-            }
-        };
+        SavingAccount sut = new SavingAccount(1L, 2.0);
 
-        account.withdraw(1.0);
+        sut.withdraw(1.0);
 
-        assertThat(account.getAmount()).isEqualTo(1.0);
-    }
-
-    @Test
-    public void validateInvalidWithdrawal() {
-        SavingAccount account = new SavingAccount(1L, 5.0);
-
-        boolean validationResult = account.validate(5.1);
-
-        assertThat(validationResult).isEqualTo(true);
-    }
-
-    @Test
-    public void validateValidWithdrawal() {
-        SavingAccount account = new SavingAccount(1L, 4.0);
-
-        boolean validationResult = account.validate(5.0);
-
-        assertThat(validationResult).isEqualTo(false);
+        assertThat(sut.getAmount()).isEqualTo(1.0);
     }
 }

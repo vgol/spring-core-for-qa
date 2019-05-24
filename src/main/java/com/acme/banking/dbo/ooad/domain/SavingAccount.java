@@ -40,7 +40,7 @@ public class SavingAccount implements Account {
         this.amount += amount;
     }
 
-    boolean validate(double amount) {
+    protected boolean validate(double amount) {
         return amount > this.amount;
     }
 }
