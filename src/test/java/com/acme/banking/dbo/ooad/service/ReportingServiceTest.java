@@ -1,4 +1,4 @@
-package com.acme.banking.dbo.ooad;
+package com.acme.banking.dbo.ooad.service;
 
 import com.acme.banking.dbo.ooad.dal.AccountRepository;
 import com.acme.banking.dbo.ooad.domain.Account;
