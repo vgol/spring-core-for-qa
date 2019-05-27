@@ -1,10 +1,20 @@
 package com.acme.banking.dbo.ooad.domain;
 
+import com.acme.banking.dbo.ooad.dal.AccountRepository;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
+@ContextConfiguration({"classpath:test-spring-context.xml", "classpath:spring-context.xml"})
 public class SavingAccountTest {
+
+    @MockBean
+    AccountRepository accountRepository;
 
     @Test
     public void depositShouldChangeAmount() {
